@@ -104,7 +104,7 @@ class employeeController extends Controller
         );
     }
     //
-    public function logoutOperations()
+    public function logoutOperation()
     {
         Auth::guard('employee')->logout();
         return redirect()->route('loginForm');
@@ -3363,7 +3363,7 @@ class employeeController extends Controller
         ]);
     }
     // 
-    public function getStockData()
+    public function getStockDataz()
     {
         // Fetch data from the Stock model or any other relevant model
         $selectStock = stock_record::whereNotNull('item_batchNo')->get();
@@ -3372,7 +3372,7 @@ class employeeController extends Controller
         return response()->json($selectStock);
     }
     // 
-    public function getStocksData()
+    public function getStocksDataz()
     {
         // Fetch data from the Stock model or any other relevant model
         $selectStock = stock_record::get();
