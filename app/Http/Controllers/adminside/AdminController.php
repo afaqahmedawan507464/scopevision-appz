@@ -268,46 +268,50 @@ class AdminController extends Controller
             if ($total_row > 0) {
                 foreach ($selectCompany  as $companyDetails) {
                     $output .= '
-                    <tr>
-                    <th scope="row" style="width: 5%">' . $companyDetails->id . '</th>
-                    <td style="width: 30%;text-align:center">' . $companyDetails->company_name . '</td>
-                    <td  style="width: 15%;text-align:center">
-                        ' . $companyDetails->company_emailaddress . '
-                    </td>
-                    <td  style="width: 15%;text-align:center">
-                        ' . $companyDetails->company_contactnumber . '
-                    </td>
-                    <td  style="width: 30%;text-align:center">
-                        ' . $companyDetails->company_address . '
-                    </td>
-                    <td  style="width: 5%;text-align:center">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
+                    <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                <div class="card bg-light d-flex flex-fill">
+                                    <div class="card-body">
+                                        <div class="row py-2">
+                                            <div class="col-12" style="padding-left: 90%;">
+                                                <a href="#" class="action-icon dropdown-toggle text-black"
+                                                    data-bs-toggle="dropdown" aria-expanded="false"></a>
                                                 <div class="dropdown-menu dropdown-menu-right" style="">
-                                                    <a class="dropdown-item" href="/CompanyDetailsPage/' . $companyDetails->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
-                                                  <a class="dropdown-item" href="/CompanyEditPage/' . $companyDetails->id . '"><i class="fas fa-edit mx-2"></i> Edit</a>
-                                                  <a class="dropdown-item" href="/CompanyRemovedOperation/' . $companyDetails->id . '"><i class="fas fa-trash mx-2"></i> Delete</a>
+                                                    <a class="dropdown-item"
+                                                        href="/CompanyDetailsPage/' . $companyDetails->id . '"><i
+                                                            class="fas fa-user mx-2"></i> View Detail</a>
+                                                    <a class="dropdown-item"
+                                                        href="/CompanyEditPage/' . $companyDetails->id . '"><i
+                                                            class="fas fa-edit mx-2"></i> Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="/CompanyRemovedOperation/' . $companyDetails->id . '"><i
+                                                            class="fas fa-trash mx-2"></i> Delete</a>
                                                 </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <span
+                                                    style="font-size: 20px;">' . $companyDetails->company_name . '</span>
+                                                <br>
+                                                <span style="font-size: 12px;"><i class="mx-2 fas fa-envelope"></i>
+                                                    <span mx-2>' . $companyDetails->company_emailaddress . '</span></span>
+                                                <br>
+                                                <span style="font-size: 12px;"><i class="mx-2 fas fa-phone"></i>
+                                                    <span
+                                                        mx-2>' . $companyDetails->company_contactnumber . '</span></span>
+                                                <br>
+                                                <span style="font-size: 12px;"><i class="mx-2 fas fa-map"></i>
+                                                    <span mx-2>' . $companyDetails->company_address . '</span></span>
+                                                <br>
                                             </div>
                                         </div>
                                     </div>
-                     </td>               
-                    </tr>
+                                </div>
+                            </div>
                     ';
                 }
             } else {
-                $output = '
-                <tr>
-                    <td align="center" colspan="12">No Data Found</td>
-                </tr>
-                ';
+                $output = '<span class="text-center">No Data Found</span>';
             }
-            $selectCompany = array(
-                'table_data'  => $output,
-            );
-            echo json_encode($selectCompany);
+            return response()->json(['table_data' => $output]);
         }
     }
     //
@@ -672,76 +676,173 @@ class AdminController extends Controller
 
             $total_row = $selectEmployee->count();
             if ($total_row > 0) {
+                //     foreach ($selectEmployee as $selectEmployees) {
+                //         if ($selectEmployees->active_status == 0) {
+                //             $output .= '
+                //         <tr>
+                //         <th scope="row" style="width: 5%">' . $selectEmployees->id . '</th>
+                //         <td style="width: 20%;text-align:center">' . $selectEmployees->user_type . '</td>
+                //         <td  style="width: 40%;text-align:center">
+                //             ' . $selectEmployees->employeename . '
+                //         </td>
+                //         <td  style="width: 30%;text-align:center">
+                //             ' . $selectEmployees->employeeemailaddress . '
+                //         </td>
+                //         <td  style="width: 5%;text-align:center">
+                //         <div class="d-flex justify-content-center">
+                //                             <div class="row">
+                //                                 <div class="col-12">
+                //                                     <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
+                //                                     <div class="dropdown-menu dropdown-menu-right" style="">
+                //                                       <a class="dropdown-item" href="/detailEmployeePage/' . $selectEmployees->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
+                //                                       <a class="dropdown-item" href="/EditEmployeePages/' . $selectEmployees->id . '"><i class="fas fa-edit mx-2"></i> Edit</a>
+                //                                       <a class="dropdown-item" href="/removeEmployeeOperation/' . $selectEmployees->id . '"><i class="fas fa-trash mx-2"></i> Delete</a>
+                //                                       <a class="dropdown-item" href="/attendanceDetailsPage/' . $selectEmployees->id . '"><i class="fas fa-history mx-2"></i> Attendance</a>
+                //                                       <a class="dropdown-item" href="/activeUser/' . $selectEmployees->id . '"><i class="fas fa-user-check mx-2"></i> Active</a>
+                //                                     </div>
+                //                                 </div>
+                //                             </div>
+                //                         </div>
+                //         </tr>
+                //         ';
+                //         } else if ($selectEmployees->active_status == 1) {
+                //             $output .= '
+                //         <tr>
+                //         <th scope="row" style="width: 5%">' . $selectEmployees->id . '</th>
+                //         <td style="width: 20%;text-align:center">' . $selectEmployees->user_type . '</td>
+                //         <td  style="width: 40%;text-align:center">
+                //             ' . $selectEmployees->employeename . '
+                //         </td>
+                //         <td  style="width: 30%;text-align:center">
+                //             ' . $selectEmployees->employeeemailaddress . '
+                //         </td>
+                //         <td  style="width: 5%;text-align:center">
+                //         <div class="d-flex justify-content-center">
+                //                             <div class="row">
+                //                                 <div class="col-12">
+                //                                     <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
+                //                                     <div class="dropdown-menu dropdown-menu-right" style="">
+                //                                       <a class="dropdown-item" href="/detailEmployeePage/' . $selectEmployees->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
+                //                                       <a class="dropdown-item" href="/EditEmployeePages/' . $selectEmployees->id . '"><i class="fas fa-edit mx-2"></i> Edit</a>
+                //                                       <a class="dropdown-item" href="/removeEmployeeOperation/' . $selectEmployees->id . '"><i class="fas fa-trash mx-2"></i> Delete</a>
+                //                                       <a class="dropdown-item" href="/attendanceDetailsPage/' . $selectEmployees->id . '"><i class="fas fa-history mx-2"></i> Attendance</a>
+                //                                       <a class="dropdown-item" href="/deactiveUser/' . $selectEmployees->id . '"><i class="fas fa-user-times mx-2"></i> De-active</a>
+                //                                     </div>
+                //                                 </div>
+                //                             </div>
+                //                         </div>
+                //         </tr>
+                //         ';
+                //         }
+                //     }
+                // } else {
+                //     $output = '
+                //     <tr>
+                //         <td align="center" colspan="12">No Data Found</td>
+                //     </tr>
+                //     ';
+                // }
+                // $selectEmployee = array(
+                //     'table_data'  => $output,
+                // );
+                // echo json_encode($selectEmployee);
                 foreach ($selectEmployee as $selectEmployees) {
                     if ($selectEmployees->active_status == 0) {
                         $output .= '
-                    <tr>
-                    <th scope="row" style="width: 5%">' . $selectEmployees->id . '</th>
-                    <td style="width: 20%;text-align:center">' . $selectEmployees->user_type . '</td>
-                    <td  style="width: 40%;text-align:center">
-                        ' . $selectEmployees->employeename . '
-                    </td>
-                    <td  style="width: 30%;text-align:center">
-                        ' . $selectEmployees->employeeemailaddress . '
-                    </td>
-                    <td  style="width: 5%;text-align:center">
-                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                  <a class="dropdown-item" href="/detailEmployeePage/' . $selectEmployees->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
-                                                  <a class="dropdown-item" href="/EditEmployeePages/' . $selectEmployees->id . '"><i class="fas fa-edit mx-2"></i> Edit</a>
-                                                  <a class="dropdown-item" href="/removeEmployeeOperation/' . $selectEmployees->id . '"><i class="fas fa-trash mx-2"></i> Delete</a>
-                                                  <a class="dropdown-item" href="/attendanceDetailsPage/' . $selectEmployees->id . '"><i class="fas fa-history mx-2"></i> Attendance</a>
-                                                  <a class="dropdown-item" href="/activeUser/' . $selectEmployees->id . '"><i class="fas fa-user-check mx-2"></i> Active</a>
+                       <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-body">
+                                            <div class="row py-2">
+                                                <div class="col-12" style="padding-left: 90%;">
+                                                    <a href="#" class="action-icon dropdown-toggle text-black"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                                        <a class="dropdown-item"
+                                                            href="/detailEmployeePage/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-user mx-2"></i> View Detail</a>
+                                                        <a class="dropdown-item"
+                                                            href="/EditEmployeePages/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-edit mx-2"></i> Edit</a>
+                                                        <a class="dropdown-item"
+                                                            href="/removeEmployeeOperation/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-trash mx-2"></i> Delete</a>
+                                                        <a class="dropdown-item"
+                                                            href="/attendanceDetailsPage/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-history mx-2"></i> Attendance</a>
+                                                            <a class="dropdown-item"
+                                                                href="/activeUser/' . $selectEmployees->id . '"><i
+                                                                    class="fas fa-user-check mx-2"></i> Active</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span
+                                                        style="font-size: 20px;">' . $selectEmployees->employeename . '</span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i
+                                                            class="mx-2 fas fa-envelope"></i>
+                                                        <span
+                                                            mx-2>' . $selectEmployees->employeeemailaddress . '</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-users"></i>
+                                                        <span mx-2>' . $selectEmployees->user_type . '</span></span>
+                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                    </tr>
+                       </div>
                     ';
-                    } else if ($selectEmployees->active_status == 1) {
+                    } else {
                         $output .= '
-                    <tr>
-                    <th scope="row" style="width: 5%">' . $selectEmployees->id . '</th>
-                    <td style="width: 20%;text-align:center">' . $selectEmployees->user_type . '</td>
-                    <td  style="width: 40%;text-align:center">
-                        ' . $selectEmployees->employeename . '
-                    </td>
-                    <td  style="width: 30%;text-align:center">
-                        ' . $selectEmployees->employeeemailaddress . '
-                    </td>
-                    <td  style="width: 5%;text-align:center">
-                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                  <a class="dropdown-item" href="/detailEmployeePage/' . $selectEmployees->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
-                                                  <a class="dropdown-item" href="/EditEmployeePages/' . $selectEmployees->id . '"><i class="fas fa-edit mx-2"></i> Edit</a>
-                                                  <a class="dropdown-item" href="/removeEmployeeOperation/' . $selectEmployees->id . '"><i class="fas fa-trash mx-2"></i> Delete</a>
-                                                  <a class="dropdown-item" href="/attendanceDetailsPage/' . $selectEmployees->id . '"><i class="fas fa-history mx-2"></i> Attendance</a>
-                                                  <a class="dropdown-item" href="/deactiveUser/' . $selectEmployees->id . '"><i class="fas fa-user-times mx-2"></i> De-active</a>
+                       <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-body">
+                                            <div class="row py-2">
+                                                <div class="col-12" style="padding-left: 90%;">
+                                                    <a href="#" class="action-icon dropdown-toggle text-black"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                                        <a class="dropdown-item"
+                                                            href="/detailEmployeePage/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-user mx-2"></i> View Detail</a>
+                                                        <a class="dropdown-item"
+                                                            href="/EditEmployeePages/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-edit mx-2"></i> Edit</a>
+                                                        <a class="dropdown-item"
+                                                            href="/removeEmployeeOperation/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-trash mx-2"></i> Delete</a>
+                                                        <a class="dropdown-item"
+                                                            href="/attendanceDetailsPage/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-history mx-2"></i> Attendance</a>
+                                                            <a class="dropdown-item"
+                                                                href="/deactiveUser/' . $selectEmployees->id . '"><i
+                                                                    class="fas fa-user-times mx-2"></i> De-active</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span
+                                                        style="font-size: 20px;">' . $selectEmployees->employeename . '</span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i
+                                                            class="mx-2 fas fa-envelope"></i>
+                                                        <span
+                                                            mx-2>' . $selectEmployees->employeeemailaddress . '</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-users"></i>
+                                                        <span mx-2>' . $selectEmployees->user_type . '</span></span>
+                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                    </tr>
+                       </div>
                     ';
                     }
                 }
             } else {
-                $output = '
-                <tr>
-                    <td align="center" colspan="12">No Data Found</td>
-                </tr>
-                ';
+                $output = '<span class="text-center">No Data Found</span>';
             }
-            $selectEmployee = array(
-                'table_data'  => $output,
-            );
-            echo json_encode($selectEmployee);
+            return response()->json(['table_data' => $output]);
         }
     }
     // 
@@ -854,8 +955,8 @@ class AdminController extends Controller
     //
     public function detailEmployeePage($id)
     {
-        $selectEmployeePage     = DB::table('employees')
-            ->leftJoin('employee_details', 'employees.id', '=', 'employee_details.employee_id')
+        $selectEmployeePage     = DB::table('employee_details')
+            ->leftJoin('employees', 'employee_details.employee_id', '=', 'employees.id')
             ->select('employee_details.*', 'employees.employeename', 'employees.employeeemailaddress', 'employees.user_image', 'employees.user_type')
             ->where('employees.id', '=', $id)
             ->get();
@@ -864,7 +965,7 @@ class AdminController extends Controller
         $educationsAdditional   = DB::table('additional_cources')->where('employee_id', '=', $id)->get();
         if (count($selectEmployeePage) > 0) {
             return view('adminside.employee.employee-details', [
-                'selectEmployee'       => $selectEmployeePage,
+                'selectEmployeePage'       => $selectEmployeePage,
                 'selectSocials'        => $selectSocials,
                 'educations'           => $educations,
                 'educationsAdditional' => $educationsAdditional,
@@ -1217,43 +1318,83 @@ class AdminController extends Controller
 
             $total_row = $selectOutGoingInspectionReports->count();
             if ($total_row > 0) {
+                // foreach ($selectOutGoingInspectionReports as $selectOutGoingInspectionReport) {
+                //     $output .= '
+                //     <tr>
+                //     <th scope="row" style="width: 10%;text-align:center">' . $selectOutGoingInspectionReport->id . '</th>
+                //     <td style="width: 15%;text-align:center">' . $selectOutGoingInspectionReport->scope_model . '</td>
+                //     <td  style="width: 15%;text-align:center">
+                //         ' . $selectOutGoingInspectionReport->scope_sr_number . '
+                //     </td>
+                //     <td  style="width: 10%;text-align:center">
+                //         ' . $selectOutGoingInspectionReport->scope_incoming_date . ' 
+                //     </td>
+                //     <td  style="width: 30%;text-align:center">
+                //         ' . $selectOutGoingInspectionReport->sender_name . '
+                //     </td>
+                //     <td  style="width: 20%;text-align:center">
+                //     <div class="d-flex justify-content-center">
+                //                         <div class="row">
+                //                             <div class="col-12">
+                //                                 <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
+                //                                 <div class="dropdown-menu dropdown-menu-right" style="">
+                //                                   <a class="dropdown-item" href="/detailsPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
+                //                                   <a class="dropdown-item" href="/editPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-edit mx-2"></i> Edit</a>
+                //                                   <a class="dropdown-item" href="/removeWithoutTjfInspectionOutgoingReport/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-trash mx-2"></i> Delete</a>
+                //                                 </div>
+                //                             </div>
+                //                         </div>
+                //                     </div>
+                //     </td>
+                //     </tr>
+                //     ';
+                // }
                 foreach ($selectOutGoingInspectionReports as $selectOutGoingInspectionReport) {
                     $output .= '
-                    <tr>
-                    <th scope="row" style="width: 10%;text-align:center">' . $selectOutGoingInspectionReport->id . '</th>
-                    <td style="width: 15%;text-align:center">' . $selectOutGoingInspectionReport->scope_model . '</td>
-                    <td  style="width: 15%;text-align:center">
-                        ' . $selectOutGoingInspectionReport->scope_sr_number . '
-                    </td>
-                    <td  style="width: 10%;text-align:center">
-                        ' . $selectOutGoingInspectionReport->scope_incoming_date . ' 
-                    </td>
-                    <td  style="width: 30%;text-align:center">
-                        ' . $selectOutGoingInspectionReport->sender_name . '
-                    </td>
-                    <td  style="width: 20%;text-align:center">
-                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                  <a class="dropdown-item" href="/detailsPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
-                                                  <a class="dropdown-item" href="/editPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-edit mx-2"></i> Edit</a>
-                                                  <a class="dropdown-item" href="/removeWithoutTjfInspectionOutgoingReport/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-trash mx-2"></i> Delete</a>
+                                <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-body">
+                                            <div class="row py-2">
+                                                <div class="col-12" style="padding-left: 90%;">
+                                                    <a href="#" class="action-icon dropdown-toggle text-black"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                                        <a class="dropdown-item"
+                                                            href="/detailsPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i
+                                                                class="fas fa-user mx-2"></i> View Detail</a>
+                                                        <a class="dropdown-item"
+                                                            href="/editPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i
+                                                                class="fas fa-edit mx-2"></i> Edit</a>
+                                                        <a class="dropdown-item"
+                                                            href="/removeWithoutTjfInspectionOutgoingReport/' . $selectOutGoingInspectionReport->id . '"><i
+                                                                class="fas fa-trash mx-2"></i> Delete</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span
+                                                        style="font-size: 15px;">' . $selectOutGoingInspectionReport->sender_name . '</span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-box"></i>
+                                                        <span
+                                                            mx-2>' . $selectOutGoingInspectionReport->scope_model . '</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-barcode"></i>
+                                                        <span
+                                                            mx-2>' . $selectOutGoingInspectionReport->scope_sr_number . '</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-calendar"></i>
+                                                        <span
+                                                            mx-2>' . $selectOutGoingInspectionReport->scope_incoming_date . ' </span></span>
+                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                    </td>
-                    </tr>
-                    ';
+                                </div>
+                ';
                 }
             } else {
-                $output = '
-                <tr>
-                    <td align="center" colspan="12">No Data Found</td>
-                </tr>
-                ';
+                $output = '<span class="text-center">No Data Found</span>';
             }
             $selectOutGoingInspectionReports = array(
                 'table_data'  => $output,
@@ -1599,6 +1740,81 @@ class AdminController extends Controller
                 return redirect()->back()->with('success_message', 'Inspection Report Is Creating Operation Is Successfully');
             } else {
                 return redirect()->back()->with('error_message', 'Inspection Report Is Creating Operation Is Un-successfully');
+            }
+        } else {
+            return redirect()->back()->with('error_message');
+        }
+    }
+    //
+    public function updateTjfInspectionOutgoingCreatingOperation(Request $request, $id)
+    {
+        $validationChaker = $request->validate([
+            'scopeModel'                 => 'required|min:2|max:15',
+            'scopeIncomingDate'          => 'required|date',
+            'scopeSrNumber'              => 'required',
+            'scopeSenderName'            => 'required|min:3|max:25',
+            'scopeReceivedWith'          => 'required|max:10000',
+            'scopeLeakage'               => 'required',
+            'scopeView'                  => 'required',
+            'scopeLightGuide'            => 'required',
+            'scopeairwater'              => 'required',
+            'scopeAngulation'            => 'required',
+            'scopeLgTube'                => 'required',
+            'scopeInsertionTube'         => 'required',
+            'scopeBiopsyChannel'         => 'required',
+            'scopeObjectiveLenz'         => 'required',
+            'scopeSuction'               => 'required',
+            'scopeAngulationLock'        => 'required',
+            'scopeFreezeButtons'         => 'required',
+            'scopeRemarks'               => 'required|min:15|max:10000',
+            'scopeInspectedBy'           => 'required',
+        ]);
+        $incomingInsppectionFormData = $request->all();
+        if ($validationChaker) {
+            $selectWithTjfIncomingInspectionReportData = DB::table('outgoing_inspection_reports')
+                ->where('id', '=', $id)
+                ->get();
+            if (count($selectWithTjfIncomingInspectionReportData) > 0) {
+                $createIncomingReports = DB::table('outgoing_inspection_reports')
+                    ->where('id', '=', $id)
+                    ->update([
+                        // 'incoming_report_id'         => $incomingInsppectionFormData['incomingInspectionId'],
+                        'scope_model'                => $incomingInsppectionFormData['scopeModel'],
+                        'scope_incoming_date'        => $incomingInsppectionFormData['scopeIncomingDate'],
+                        'scope_sr_number'            => $incomingInsppectionFormData['scopeSrNumber'],
+                        'sender_name'                => $incomingInsppectionFormData['scopeSenderName'],
+                        'scope_sending_with'         => $incomingInsppectionFormData['scopeReceivedWith'],
+                        'scope_leakage'              => $incomingInsppectionFormData['scopeLeakage'],
+                        'scope_view'                 => $incomingInsppectionFormData['scopeView'],
+                        'scope_lightguide'           => $incomingInsppectionFormData['scopeLightGuide'],
+                        'scope_airwater'             => $incomingInsppectionFormData['scopeairwater'],
+                        'scope_angulation'           => $incomingInsppectionFormData['scopeAngulation'],
+                        'scope_lgtube'               => $incomingInsppectionFormData['scopeLgTube'],
+                        'scope_insertiontube'        => $incomingInsppectionFormData['scopeInsertionTube'],
+                        'scope_biopsychannel'        => $incomingInsppectionFormData['scopeBiopsyChannel'],
+                        'scope_objectivelenz'        => $incomingInsppectionFormData['scopeObjectiveLenz'],
+                        'scope_suction'              => $incomingInsppectionFormData['scopeSuction'],
+                        'scope_angulation_lock'      => $incomingInsppectionFormData['scopeAngulationLock'],
+                        'scope_freezing_buttons'     => $incomingInsppectionFormData['scopeFreezeButtons'],
+                        'scope_tjf_elevator_channel' => $incomingInsppectionFormData['scopeElevatorChannel'],
+                        'scope_tjf_elevator_wire'    => $incomingInsppectionFormData['scopeElevatorWire'],
+                        'scope_tjf_elevator_axel'    => $incomingInsppectionFormData['scopeElevatorAxel'],
+                        'scope_tjf_tip_cover'        => $incomingInsppectionFormData['scopeTipCover'],
+                        'scope_tjf_elevator_clinder' => $incomingInsppectionFormData['scopeElevatorClinder'],
+                        'scope_tjf_liver'            => $incomingInsppectionFormData['scopeElevatorLiver'],
+                        'remarks'                    => $incomingInsppectionFormData['scopeRemarks'],
+                        'inspectedby_id'             => $incomingInsppectionFormData['scopeInspectedBy'],
+                        'company_id'                 => $incomingInsppectionFormData['companyId'],
+                        'created_at'                 => NOW(),
+                        'updated_at'                 => NOW(),
+                    ]);
+                if ($createIncomingReports) {
+                    return redirect()->back()->with('success_message', 'Inspection Report Is Updating Operation Is Successfully');
+                } else {
+                    return redirect()->back()->with('error_message', 'Inspection Report Is Updating Operation Is Un-successfully');
+                }
+            } else {
+                return redirect()->back()->with('error_message', 'Not Data Founded');
             }
         } else {
             return redirect()->back()->with('error_message');
@@ -3706,7 +3922,7 @@ class AdminController extends Controller
             'quotationItemScopeModel'       => 'required',
             'quotationItemScopeSrNumber'    => 'required',
             'quotationItemNeedWork'         => 'required',
-            'quotationItemProblem'          => 'required',
+            // 'quotationItemProblem'          => 'required',
             'quotationItemAmount'           => 'required',
             'quotationTermAndConditions'    => 'required',
         ]);
@@ -3725,7 +3941,7 @@ class AdminController extends Controller
                 $quotationItemScopeModel         = json_encode($data['quotationItemScopeModel']);
                 $quotationItemNeedWork           = json_encode($data['quotationItemNeedWork']);
                 $quotationItemAmount             = json_encode($data['quotationItemAmount']);
-                $quotationItemProblem            = json_encode($data['quotationItemProblem']);
+                // $quotationItemProblem            = json_encode($data['quotationItemProblem']);
                 $quotationTermAndConditions      = json_encode($data['quotationTermAndConditions']);
                 // ======================  =========================
                 if (empty($data['quotationGstText'])) {
@@ -3740,7 +3956,7 @@ class AdminController extends Controller
                             'invoice_item_srNumber'        => $quotationItemSrNumber,
                             'invoice_scope_model'          => $quotationItemScopeModel,
                             'invoice_scope_srno'           => $quotationItemScopeSrNumber,
-                            'invoice_scope_problem'        => $quotationItemProblem,
+                            // 'invoice_scope_problem'        => $quotationItemProblem,
                             'invoice_need_work'            => $quotationItemNeedWork,
                             'invoice_total_price'          => $quotationItemAmount,
                             'invoice_termAndConditions'    => $quotationTermAndConditions,
@@ -3761,7 +3977,7 @@ class AdminController extends Controller
                             'invoice_item_srNumber'        => $quotationItemSrNumber,
                             'invoice_scope_model'          => $quotationItemScopeModel,
                             'invoice_scope_srno'           => $quotationItemScopeSrNumber,
-                            'invoice_scope_problem'        => $quotationItemProblem,
+                            // 'invoice_scope_problem'        => $quotationItemProblem,
                             'invoice_need_work'            => $quotationItemNeedWork,
                             'invoice_total_price'          => $quotationItemAmount,
                             'invoice_gsttext'              => $data['quotationGstText'],
@@ -5387,6 +5603,9 @@ class AdminController extends Controller
     // 
     public function attendanceDetailsPage($id)
     {
+        $currentYears = '';
+        $startMonth   = '';
+        $endMonth     = '';
         $attendanceData = attendance_employee::all();
         $selectCompanies = DB::table('companies')->get();
         $latestRecord = DB::table('attendance_employees')->latest('clockOutTime')->first();

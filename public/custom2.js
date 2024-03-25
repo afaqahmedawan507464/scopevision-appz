@@ -18,33 +18,47 @@ $(document).ready(function () {
             <div class="row px-2 py-2">
             <div class="col-12 py-2">
                 <div class="row">
-                    <div class="col-8"></div>
-                    <div class="col-4 d-flex justify-content-end align-items-center">
+                    <div class="col-12 d-flex justify-content-end align-items-center">
                         <button class="btn btn-outline-danger remove_item_btn"><i class="mx-2 fas fa-trash"></i>Remove</button>
                     </div>
                 </div>
             </div>
+            
             <div class="col-12">
-                <div class="d-flex justify-content-center align-items-center py-2">
-                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Serial Number:</label>
-                    <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemSrNumber[]">
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="d-flex justify-content-center align-items-start py-2">
-                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Description</label>
-                    <select name="quotationItemDescription[]" id="quotationItemDescription" class="form-control">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Serial Number:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Serial Number
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemSrNumber[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Description:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Description
+                                                :</label>
+                                            <select name="quotationItemDescription[]" id="quotationItemDescription" class="form-control">
                     <option value="">Select Items</option>
                     ${data.map(item => `<option value="${item.id}">${item.item_name}</option>`).join('')}
                     </select>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="d-flex justify-content-center align-items-center py-2">
-                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Amount/Rate:</label>
-                    <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemAmount[]">
-                </div>
-            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Amount/Rate:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Amount/Rate
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemAmount[]">
+                                        </div>
+                                    </div>
         </div>
             </div>
         `);
@@ -85,10 +99,13 @@ $(document).ready(function () {
             <div class="eee">
             <div class="row px-2 py-2">
                 <div class="col-12">
-                    <div class="d-flex justify-content-center align-items-center py-2">
-                        <label class="text-end mx-2 mt-1" for="" style="width:300px;"></label>
+                   <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;"></label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for=""></label>
                          <input type="text" class="form-control" placeholder="Ex, Term And Conditions" name="quotationTermAndConditions[]">
-                        <button class="btn btn-outline-danger remove_item_btn1 mx-2"><i class="mx-2 fas fa-trash"></i></button>
+                        <button class="btn btn-outline-danger remove_item_btn1 mx-0 mx-md-2 mt-md-0 mt-2  "><i class="mx-2 fas fa-trash"></i></button>
                     </div>
                 </div>
             </div>
@@ -133,58 +150,89 @@ $(document).ready(function () {
                 <div class="row px-2 py-2">
                                 <div class="col-12 py-2">
                                     <div class="row">
-                                        <div class="col-8"></div>
-                                        <div class="col-4 d-flex justify-content-end align-items-center">
+                                        <div class="col-12 d-flex justify-content-end align-items-center">
                                         <button class="btn btn-outline-danger remove_item_btn4"><i class="mx-2 fas fa-trash"></i>Remove</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Serial Number:</label>
-                                        <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemSrNumber[]">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Serial Number:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Serial Number
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemSrNumber[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-start py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Item:</label>
-                                        <select name="quotationItemDescription[]" id="quotationItemDescription" class="form-control">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Items:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Items
+                                                :</label>
+                                            <select name="quotationItemDescription[]" id="quotationItemDescription" class="form-control">
                                         <option value="">Select Items</option>
                                         ${data.map(item => `<option value="${item.id}">${item.item_name}</option>`).join('')}
                                         </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-start py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Batch No</label>
-                                        <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemBatchNumber[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Batch No:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Batch No
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemBatchNumber[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-start py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Expire Date</label>
-                                        <input type="date" class="form-control" placeholder="Ex, 12-12-0000" name="quotationItemExpireDate[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Expire Date:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Expire Date
+                                                :</label>
+                                            <input type="date" class="form-control" placeholder="Ex, 12-12-0000"
+                                                name="quotationItemExpireDate[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-start py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Qty</label>
-                                        <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemQtv[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Qty:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none " for="">Qty
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemQtv[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-start py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Price</label>
-                                        <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemPrice[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Price:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Price
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemPrice[]">
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Total Amount:</label>
-                                        <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemAmount[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Total Amount:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Total Amount
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemAmount[]">
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                 </div>
             `);
@@ -304,23 +352,39 @@ $(document).ready(function () {
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="d-flex justify-content-center align-items-center py-2">
-                            <label class="text-end mx-2 mt-1" for="" style="width:300px;">Serial Number:</label>
-                            <input type="number" class="form-control" placeholder="Ex, 132" name="serviceReportSrNumber[]">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center align-items-start py-2">
-                            <label class="text-end mx-2 mt-1" for="" style="width:300px;">Question</label>
-                            <input type="text" class="form-control" placeholder="Ex, Question" name="serviceReportQuestion[]">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center align-items-center py-2">
-                            <label class="text-end mx-2 mt-1" for="" style="width:300px;">Answer:</label>
-                            <input type="text" class="form-control" placeholder="Ex, yes or no" name="serviceReportanswer[]">
-                        </div>
-                    </div>
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Serial Number:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Serial
+                                                Number
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="serviceReportSrNumber[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Question:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Question
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, Question"
+                                                name="serviceReportQuestion[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Answer:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Answer
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, yes or no"
+                                                name="serviceReportanswer[]">
+                                        </div>
+                                    </div>
                 </div>
                 </div>
             `);
@@ -358,48 +422,77 @@ $(document).ready(function () {
                 <div class="row px-2 py-2">
                             <div class="col-12 py-2">
                                 <div class="row">
-                                    <div class="col-8"></div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
+                                    <div class="col-12 d-flex justify-content-end align-items-center">
                                         <button class="btn btn-outline-danger remove_item_btn11"><i class="mx-2 fas fa-trash"></i>Remove</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="d-flex justify-content-center align-items-center py-2">
-                                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Serial Number:</label>
-                                    <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemSrNumber[]">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center align-items-center py-2">
-                                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Scope Model:</label>
-                                    <input type="text" class="form-control" placeholder="Ex, cf-140L" name="quotationItemScopeModel[]">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center align-items-center py-2">
-                                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Scope Sr No:</label>
-                                    <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemScopeSrNumber[]">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center align-items-start py-2">
-                                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Problem</label>
-                                    <textarea name="quotationItemProblem[]" id="quotationItemProblem" class="form-control" placeholder="Ex, Description" cols="30" rows="2"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center align-items-start py-2">
-                                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Need Work</label>
-                                    <textarea name="quotationItemNeedWork[]" id="quotationItemNeedWork" class="form-control" placeholder="Ex, Description" cols="30" rows="2"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center align-items-center py-2">
-                                    <label class="text-end mx-2 mt-1" for="" style="width:300px;">Amount/Rate:</label>
-                                    <input type="number" class="form-control" placeholder="Ex, 132" name="quotationItemAmount[]">
-                                </div>
-                            </div>
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Serial Number:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Serial Number
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemSrNumber[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Scope Model:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Scope Model
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, cf-140L"
+                                                name="quotationItemScopeModel[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Scope Sr No:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Scope Sr No
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemScopeSrNumber[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Problem:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Problem
+                                                :</label>
+                                            <textarea name="quotationItemProblem[]" id="quotationItemProblem" class="form-control" placeholder="Ex, Description"
+                                                cols="30" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Need Work:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none " for="">Need
+                                                Work
+                                                :</label>
+                                            <textarea name="quotationItemNeedWork[]" id="quotationItemNeedWork" class="form-control"
+                                                placeholder="Ex, Description" cols="30" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Amount/Rate:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Amount/Rate
+                                                :</label>
+                                            <input type="number" class="form-control" placeholder="Ex, 132"
+                                                name="quotationItemAmount[]">
+                                        </div>
+                                    </div>
                         </div>
                 </div>
             `);
@@ -435,56 +528,78 @@ $(document).ready(function () {
                 <div class="row px-2 py-2">
                 <div class="col-12 py-2">
                     <div class="row">
-                        <div class="col-8"></div>
-                        <div class="col-4 d-flex justify-content-end align-items-center">
+                        <div class="col-12 d-flex justify-content-end align-items-center">
                             <button class="btn btn-outline-danger remove_item_btn13"><i class="mx-2 fas fa-trash"></i>Remove</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="d-flex justify-content-center align-items-center py-2">
-                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Expense Type:</label>
-                        <select name="expenseType[]" id="expenseType" class="form-control">
-                            <option value="">Select Expense Category</option>
-                            <option value="1">Utilities Expense</option>
-                            <option value="2">Travel Expense</option>
-                            <option value="3">Shippment Expense</option>
-                            <option value="4">Office Expense</option>
-                            <option value="5">Utilities Expense</option>
-                            <option value="6">Salaries Expense</option>
-                            <option value="7">Office Rent</option>
-                            <option value="8">MD Expense</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="d-flex justify-content-center align-items-center py-2">
-                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Amount:</label>
-                        <input type="text" class="form-control" placeholder="Ex, 132" name="expenseAmount[]">
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="d-flex justify-content-center align-items-center py-2">
-                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Payment Type:</label>
-                        <select name="expensePaymentType[]" id="expensePaymentType" class="form-control">
-                            <option value="">Select Payment Type</option>
-                            <option value="1">Cash Payment</option>
-                            <option value="2">Online Payment</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="d-flex justify-content-center align-items-center py-2">
-                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Voucher Number:</label>
-                        <input type="text" class="form-control" placeholder="Ex, abc123" name="expenseVoucherNumber[]">
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="d-flex justify-content-center align-items-start py-2">
-                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Details:</label>
-                        <textarea name="expenseDetails[]" id="expenseDetails" cols="30" rows="3" placeholder="Ex, demo details" class="form-control"></textarea>
-                    </div>
-                </div>
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Expense Type:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Expense Type
+                                                :</label>
+                                            <select name="expenseType[]" id="expenseType" class="form-control">
+                                                <option value="">Select Expense Category</option>
+                                                <option value="1">Utilities Expense</option>
+                                                <option value="2">Travel Expense</option>
+                                                <option value="3">Shippment Expense</option>
+                                                <option value="4">Office Expense</option>
+                                                <option value="5">Utilities Expense</option>
+                                                <option value="6">Salaries Expense</option>
+                                                <option value="7">Office Rent</option>
+                                                <option value="8">MD Expense</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Amount:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none " for="">Amount
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, 132"
+                                                name="expenseAmount[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Payment Type:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Payment Type
+                                                :</label>
+                                            <select name="expensePaymentType[]" id="expensePaymentType"
+                                                class="form-control">
+                                                <option value="">Select Payment Type</option>
+                                                <option value="1">Cash Payment</option>
+                                                <option value="2">Online Payment</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Voucher Number:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Voucher Number
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, abc123"
+                                                name="expenseVoucherNumber[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Details:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Details
+                                                :</label>
+                                            <textarea name="expenseDetails[]" id="expenseDetails" cols="30" rows="3" placeholder="Ex, demo details"
+                                                class="form-control"></textarea>
+                                        </div>
+                                    </div>
             </div>    
                 </div>
             `);
@@ -529,62 +644,100 @@ $(document).ready(function () {
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Received From:</label>
-                                        <input type="text" class="form-control" placeholder="Ex, demo person name" name="expensePersonName[]">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Received From:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Received From
+                                                :</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Ex, demo person name" name="expensePersonName[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Amount:</label>
-                                        <input type="text" class="form-control" placeholder="Ex, 132" name="expenseAmount[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Amount:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none " for="">Amount
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, 132"
+                                                name="expenseAmount[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Payment:</label>
-                                        <select name="expenseType[]" id="expenseType" class="form-control">
-                                            <option value="">Select Payment</option>
-                                            <option value="1">Payment Send</option>
-                                            <option value="2">Payment Received</option>
-                                        </select>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Payment:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Payment
+                                                :</label>
+                                            <select name="expenseType[]" id="expenseType" class="form-control">
+                                                <option value="">Select Payment</option>
+                                                <option value="1">Payment Send</option>
+                                                <option value="2">Payment Received</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Payment Type:</label>
-                                        <select name="expensePaymentType[]" id="expensePaymentType" class="form-control">
-                                            <option value="">Select Payment Type</option>
-                                            <option value="1">Cash Payment</option>
-                                            <option value="2">Online Payment</option>
-                                        </select>
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Payment Type:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Payment Type
+                                                :</label>
+                                            <select name="expensePaymentType[]" id="expensePaymentType"
+                                                class="form-control">
+                                                <option value="">Select Payment Type</option>
+                                                <option value="1">Cash Payment</option>
+                                                <option value="2">Online Payment</option>
+                                                {{-- <option value="3">Payment Through Check</option> --}}
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Bank Name:</label>
-                                        <input type="text" class="form-control" placeholder="Ex, demo bank name" name="expenseBankName[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Bank Name:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none " for="">Bank
+                                                Name
+                                                :</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Ex, demo bank name" name="expenseBankName[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Account Number:</label>
-                                        <input type="text" class="form-control" placeholder="Ex, 123465" name="expenseBankAccountNumber[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Account Number:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Account Number
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, 123465"
+                                                name="expenseBankAccountNumber[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 d-none">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Check Number:</label>
-                                        <input type="text" class="form-control" placeholder="Ex, 123465" name="expenseCheckNumber[]">
+                                    <div class="col-12 d-none">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Check Number:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Check Number
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, 123465"
+                                                name="expenseCheckNumber[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center align-items-center py-2">
-                                        <label class="text-end mx-2 mt-1" for="" style="width:300px;">Transection Id:</label>
-                                        <input type="text" class="form-control" placeholder="Ex, 123465" name="expenseTransectionId[]">
+                                    <div class="col-12">
+                                        <div class="d-md-flex flex-md-row align-items-md-start py-2">
+                                            <label class="lable1 text-end mx-2 mt-1 d-none d-md-inline" for=""
+                                                style="width:300px;">Transection Id:</label>
+                                            <label class="lable2 text-start mx-2 mt-1  d-md-none "
+                                                for="">Transection Id
+                                                :</label>
+                                            <input type="text" class="form-control" placeholder="Ex, 123465"
+                                                name="expenseTransectionId[]">
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
                 </div>
             `);
 

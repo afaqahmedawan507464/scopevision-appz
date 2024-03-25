@@ -121,123 +121,111 @@
 
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Leakage:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_leakage == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_leakage == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">View:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_view == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_view == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Light Guide:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_lightguide == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_lightguide == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Air/Water:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_airwater == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_airwater == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Angulations:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_angulation == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_angulation == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">LG Tube:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_lgtube == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_lgtube == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <!--  -->
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Insertion Tube:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_insertiontube == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_insertiontube == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:10px;">Biopsy Channel:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_biopsychannel == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_biopsychannel == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Objective Lenz:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_objectivelenz == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_objectivelenz == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Suction:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_suction == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_suction == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Lock:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_angulation_lock == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_angulation_lock == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
                 <div class="col-2 p-2" style="border:0.5px solid lightgray">
                     <label class="my-2" style="margin-top: 5px;font-size:12px;">Freeze Buttons:</label>
-                    <select name="" id="" class="form-control" disabled>
-                        @if ($selectIncomingReportInspections->scope_freezing_buttons == 1)
-                            <option value="">Ok</option>
-                        @else
-                            <option value="">Not Ok</option>
-                        @endif
+                    @if ($selectIncomingReportInspections->scope_freezing_buttons == 1)
+                        <option value="">Ok</option>
+                    @else
+                        <option value="">Not Ok</option>
+                    @endif
                     </select>
                 </div>
             </div>
@@ -249,62 +237,56 @@
                 <div class="row">
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Channel:</label>
-                        <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_leakage == 1)
-                                <option value="">Ok</option>
-                            @else
-                                <option value="">Not Ok</option>
-                            @endif
+                        @if ($selectIncomingReportInspections->scope_tjf_elevator_channel == 1)
+                            <option value="">Ok</option>
+                        @else
+                            <option value="">Not Ok</option>
+                        @endif
                         </select>
                     </div>
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Elevator Wire:</label>
-                        <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_view == 1)
-                                <option value="">Ok</option>
-                            @else
-                                <option value="">Not Ok</option>
-                            @endif
+                        @if ($selectIncomingReportInspections->scope_tjf_elevator_wire == 1)
+                            <option value="">Ok</option>
+                        @else
+                            <option value="">Not Ok</option>
+                        @endif
                         </select>
                     </div>
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Elevator Axel:</label>
-                        <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_lightguide == 1)
-                                <option value="">Ok</option>
-                            @else
-                                <option value="">Not Ok</option>
-                            @endif
+                        @if ($selectIncomingReportInspections->scope_tjf_elevator_axel == 1)
+                            <option value="">Ok</option>
+                        @else
+                            <option value="">Not Ok</option>
+                        @endif
                         </select>
                     </div>
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Tip Cover:</label>
-                        <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_airwater == 1)
-                                <option value="">Ok</option>
-                            @else
-                                <option value="">Not Ok</option>
-                            @endif
+                        @if ($selectIncomingReportInspections->scope_tjf_tip_cover == 1)
+                            <option value="">Ok</option>
+                        @else
+                            <option value="">Not Ok</option>
+                        @endif
                         </select>
                     </div>
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Clinder:</label>
-                        <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_angulation == 1)
-                                <option value="">Ok</option>
-                            @else
-                                <option value="">Not Ok</option>
-                            @endif
+                        @if ($selectIncomingReportInspections->scope_tjf_elevator_clinder == 1)
+                            <option value="">Ok</option>
+                        @else
+                            <option value="">Not Ok</option>
+                        @endif
                         </select>
                     </div>
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Liver:</label>
-                        <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_lgtube == 1)
-                                <option value="">Ok</option>
-                            @else
-                                <option value="">Not Ok</option>
-                            @endif
+                        @if ($selectIncomingReportInspections->scope_tjf_liver == 1)
+                            <option value="">Ok</option>
+                        @else
+                            <option value="">Not Ok</option>
+                        @endif
                         </select>
                     </div>
                     <!--  -->

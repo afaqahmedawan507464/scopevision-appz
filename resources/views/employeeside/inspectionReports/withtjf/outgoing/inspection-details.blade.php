@@ -233,6 +233,75 @@
                     </select>
                 </div>
             </div>
+            @if ($selectIncomingReportInspections->scope_tjf_elevator_channel == '')
+            @else
+                {{--  --}}
+                <!--  -->
+                <div class="row">
+                    <div class="col-2 p-2" style="border:0.5px solid lightgray">
+                        <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Channel:</label>
+                        <select name="" id="" class="form-control" disabled>
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_channel == 1)
+                                <option value="">Ok</option>
+                            @else
+                                <option value="">Not Ok</option>
+                            @endif
+                        </select>
+                    </div>
+                    <div class="col-2 p-2" style="border:0.5px solid lightgray">
+                        <label class="my-2" style="margin-top: 5px;font-size:12px;">Elevator Wire:</label>
+                        <select name="" id="" class="form-control" disabled>
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_wire == 1)
+                                <option value="">Ok</option>
+                            @else
+                                <option value="">Not Ok</option>
+                            @endif
+                        </select>
+                    </div>
+                    <div class="col-2 p-2" style="border:0.5px solid lightgray">
+                        <label class="my-2" style="margin-top: 5px;font-size:12px;">Elevator Axel:</label>
+                        <select name="" id="" class="form-control" disabled>
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_axel == 1)
+                                <option value="">Ok</option>
+                            @else
+                                <option value="">Not Ok</option>
+                            @endif
+                        </select>
+                    </div>
+                    <div class="col-2 p-2" style="border:0.5px solid lightgray">
+                        <label class="my-2" style="margin-top: 5px;font-size:12px;">Tip Cover:</label>
+                        <select name="" id="" class="form-control" disabled>
+                            @if ($selectIncomingReportInspections->scope_tjf_tip_cover == 1)
+                                <option value="">Ok</option>
+                            @else
+                                <option value="">Not Ok</option>
+                            @endif
+                        </select>
+                    </div>
+                    <div class="col-2 p-2" style="border:0.5px solid lightgray">
+                        <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Clinder:</label>
+                        <select name="" id="" class="form-control" disabled>
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_clinder == 1)
+                                <option value="">Ok</option>
+                            @else
+                                <option value="">Not Ok</option>
+                            @endif
+                        </select>
+                    </div>
+                    <div class="col-2 p-2" style="border:0.5px solid lightgray">
+                        <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Liver:</label>
+                        <select name="" id="" class="form-control" disabled>
+                            @if ($selectIncomingReportInspections->scope_tjf_liver == 1)
+                                <option value="">Ok</option>
+                            @else
+                                <option value="">Not Ok</option>
+                            @endif
+                        </select>
+                    </div>
+                    <!--  -->
+                </div>
+                {{--  --}}
+            @endif
             <h5 class="text-center mt-2">Describe Scope Fault And Your Remarks In Details</h5>
             <div class="row">
                 <div class="col-12 py-2">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,17 @@
     <meta name="theme-color" content="#ffffff">
     <script src="/themes/public/assets/js/config.js"></script>
     <script src="/themes/public/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+        rel="stylesheet">
     <link href="/themes/public/vendors/overlayscrollbars/OverlayScrollbars.min.css" rel="stylesheet">
     <link href="/themes/public/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
     <link href="/themes/public/assets/css/theme.min.css" rel="stylesheet" id="style-default">
@@ -21,38 +26,42 @@
     <link href="/themes/public/assets/css/user.min.css" rel="stylesheet" id="user-style-default">
     <title>Scope Visions | Employee List</title>
 </head>
+
 <body>
     <div class="container mt-2">
+
         @if (Session::has('error_message'))
-
-        <div class="alert alert-danger alert-dismissible fade show px-4 d-flex justify-content-center flex-column" role="alert">
-         <strong>Error</strong> {{ Session::get('error_message'); }}
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-       </div>
-
-       @endif
-       @if (Session::has('success_message'))
-
-       <div class="alert alert-success alert-dismissible fade show px-4 d-flex justify-content-center flex-column" role="alert">
-         <strong>Success:</strong> {{ Session::get('success_message'); }}
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-       </div>
-
-       @endif
-       @if ($errors->any())
-       <div class="alert alert-danger alert-dismissible fade show px-4 d-flex justify-content-center flex-column" role="alert">
-             @foreach ($errors->all() as $item)
-               <li style="list-style: none">{{ $item }}</li>
-             @endforeach
-             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-         </div>
+            <script>
+                swal("Error Message", "{{ Session::get('error_message') }}", "error", {
+                    button: "Close",
+                });
+            </script>
+        @endif
+        @if (Session::has('success_message'))
+            <script>
+                swal("Success Message", "{{ Session::get('success_message') }}", "success", {
+                    button: "Close",
+                });
+            </script>
+        @endif
+        @if ($errors->any())
+            <script>
+                var errorMessages = '';
+                @foreach ($errors->all() as $error)
+                    errorMessages += '{{ $error }}\n';
+                @endforeach
+                swal("Info Message", errorMessages, "info", {
+                    button: "Close",
+                });
+            </script>
         @endif
         <div class="card">
             <div class="card-header">
                 <div class="col-12">
                     <div class="row">
                         <div class="col-6">
-                            <a href="{{ route('adminDashboardPage') }}" class="btn btn-outline-primary"><i class="fas fa-angle-left me-2"></i>Back</a>
+                            <a href="{{ route('adminDashboardPage') }}" class="btn btn-outline-primary"><i
+                                    class="fas fa-angle-left me-2"></i>Back</a>
                         </div>
                         <div class="col-6">
                             <h2 class="text-end">Employee List</h2>
@@ -61,12 +70,13 @@
                 </div>
             </div>
             <div class="card-body">
-                    <input type="text" class="form-control" id="searchEmployee"  name="searchEmployee">
+                <input type="text" class="form-control" id="searchEmployee" name="searchEmployee">
                 <div class="col-12 py-2">
                     <div class="py-2 d-flex justify-content-end align-items-center">
-                        <a href="{{ route('pageCreatingEmployee') }}" class="btn btn-outline-primary "><i class="mx-2 fas fa-plus"></i>Add More</a>
+                        <a href="{{ route('pageCreatingEmployee') }}" class="btn btn-outline-primary "><i
+                                class="mx-2 fas fa-plus"></i>Add More</a>
                     </div>
-                    <table class="table">
+                    {{-- <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 5%;text-align:center">
@@ -81,59 +91,123 @@
                                 {{-- <th scope="col" style="width: 10%;text-align:center">
                                     Status
                                 </th> --}}
-                                <th scope="col" style="width: 30%;text-align:center">
-                                    Email Address
-                                </th>
-                                <th scope="col" style="width: 5%;text-align:center">
-                                    Menu
-                                </th>
-                            </tr>
-                        </thead>
-                        @if ( $selectEmployee->isEmpty() )
-                            
-                        @else
-                        <tbody id="clientData">
+                    {{-- <th scope="col" style="width: 30%;text-align:center">
+                        Email Address
+                    </th>
+                    <th scope="col" style="width: 5%;text-align:center">
+                        Menu
+                    </th>
+                    </tr>
+                    </thead> --}}
+                    @if ($selectEmployee->isEmpty())
+                    @else
+                        {{-- <tbody id="clientData">
                             <div id="total_records">
+                                @foreach ($selectEmployee as $selectEmployees)
+                                    <tr>
+                                        <th scope="row" style="width: 5%">
+                                            {{ $selectEmployees->id }}
+                                        </th>
+                                        <td style="width: 20%;text-align:center">
+                                            {{ $selectEmployees->user_type }}
+                                        </td>
+                                        <td style="width: 40%;text-align:center">
+                                            {{ $selectEmployees->employeename }}
+                                        </td>
+                                        <td style="width: 30%;text-align:center">
+                                            {{ $selectEmployees->employeeemailaddress }}
+                                        </td>
+                                        <td style="width: 5%;text-align:center">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <a href="#" class="action-icon dropdown-toggle text-black"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fas fa-bars"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-right" style="">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('detailEmployeePage', $selectEmployees->id) }}"><i
+                                                                    class="fas fa-user mx-2"></i> View Detail</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('editEmployeePage', $selectEmployees->id) }}"><i
+                                                                    class="fas fa-edit mx-2"></i> Edit</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('removeOperationEmployee', $selectEmployees->id) }}"><i
+                                                                    class="fas fa-trash mx-2"></i> Delete</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('attendanceDetailsPage', $selectEmployees->id) }}"><i
+                                                                    class="fas fa-history mx-2"></i> Attendance</a>
+                                                            @if ($selectEmployees->active_status == '0')
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('activeUser', $selectEmployees->id) }}"><i
+                                                                        class="fas fa-user-check mx-2"></i> Active</a>
+                                                            @else
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('deactiveUser', $selectEmployees->id) }}"><i
+                                                                        class="fas fa-user-times mx-2"></i>
+                                                                    De-active</a>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </div>
+                        </tbody> --}}
+                        <div class="row py-2" id="companyList">
                             @foreach ($selectEmployee as $selectEmployees)
-                            <tr>
-                                <th scope="row" style="width: 5%">
-                                    {{ $selectEmployees->id }}
-                                </th>
-                                <td  style="width: 20%;text-align:center">
-                                    {{ $selectEmployees->user_type }}
-                                </td>
-                                <td  style="width: 40%;text-align:center">
-                                    {{ $selectEmployees->employeename }}
-                                </td>
-                                <td  style="width: 30%;text-align:center">
-                                    {{ $selectEmployees->employeeemailaddress }}
-                                </td>
-                                <td  style="width: 5%;text-align:center">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                  <a class="dropdown-item" href="{{ route('detailEmployeePage',$selectEmployees->id) }}"><i class="fas fa-user mx-2"></i> View Detail</a>
-                                                  <a class="dropdown-item" href="{{ route('editEmployeePage',$selectEmployees->id) }}"><i class="fas fa-edit mx-2"></i> Edit</a>
-                                                  <a class="dropdown-item" href="{{ route('removeOperationEmployee',$selectEmployees->id) }}"><i class="fas fa-trash mx-2"></i> Delete</a>
-                                                  <a class="dropdown-item" href="{{ route('attendanceDetailsPage',$selectEmployees->id) }}"><i class="fas fa-history mx-2"></i> Attendance</a>
-                                                  @if ($selectEmployees->active_status == '0')
-                                                  <a class="dropdown-item" href="{{ route('activeUser',$selectEmployees->id) }}"><i class="fas fa-user-check mx-2"></i> Active</a>
-                                                  @else
-                                                  <a class="dropdown-item" href="{{ route('deactiveUser',$selectEmployees->id) }}"><i class="fas fa-user-times mx-2"></i> De-active</a>
-                                                  @endif
+                                <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-body">
+                                            <div class="row py-2">
+                                                <div class="col-12" style="padding-left: 90%;">
+                                                    <a href="#" class="action-icon dropdown-toggle text-black"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('detailEmployeePage', $selectEmployees->id) }}"><i
+                                                                class="fas fa-user mx-2"></i> View Detail</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('editEmployeePage', $selectEmployees->id) }}"><i
+                                                                class="fas fa-edit mx-2"></i> Edit</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('removeOperationEmployee', $selectEmployees->id) }}"><i
+                                                                class="fas fa-trash mx-2"></i> Delete</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('attendanceDetailsPage', $selectEmployees->id) }}"><i
+                                                                class="fas fa-history mx-2"></i> Attendance</a>
+                                                        @if ($selectEmployees->active_status == '0')
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('activeUser', $selectEmployees->id) }}"><i
+                                                                    class="fas fa-user-check mx-2"></i> Active</a>
+                                                        @else
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('deactiveUser', $selectEmployees->id) }}"><i
+                                                                    class="fas fa-user-times mx-2"></i> De-active</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span
+                                                        style="font-size: 20px;">{{ $selectEmployees->employeename }}</span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-envelope"></i>
+                                                        <span
+                                                            mx-2>{{ $selectEmployees->employeeemailaddress }}</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-users"></i>
+                                                        <span mx-2>{{ $selectEmployees->user_type }}</span></span>
+                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
+                                </div>
                             @endforeach
-                            </div>
-                        </tbody>
-                        @endif
-                    </table>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -151,29 +225,30 @@
     <script src="/jquery-3.7.1.min.js"></script>
     <script>
         // search operations
-    $(document).ready(function(){
- 
- fetch_customer_data();
+        $(document).ready(function() {
 
- function fetch_customer_data(query = '')
- {
-     $.ajax({
-         url:"{{ route('searchEmployee') }}",
-         method:'GET',
-         data:{query:query},
-         dataType:'json',
-         success:function(data)
-         {
-             $('tbody').html(data.table_data);
-         }
-     })
- }
+            fetch_customer_data();
 
- $(document).on('keyup', '#searchEmployee', function(){
-     var query = $(this).val();
-     fetch_customer_data(query);
- });
-});
+            function fetch_customer_data(query = '') {
+                $.ajax({
+                    url: "{{ route('searchEmployee') }}",
+                    method: 'GET',
+                    data: {
+                        query: query
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#companyList').html(data.table_data);
+                    }
+                })
+            }
+
+            $(document).on('keyup', '#searchEmployee', function() {
+                var query = $(this).val();
+                fetch_customer_data(query);
+            });
+        });
     </script>
 </body>
+
 </html>

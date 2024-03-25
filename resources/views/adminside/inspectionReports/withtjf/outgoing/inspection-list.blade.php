@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,9 @@
     <!--    Stylesheets-->
     <!-- ===============================================-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+        rel="stylesheet">
     <link href="/themes/public/vendors/overlayscrollbars/OverlayScrollbars.min.css" rel="stylesheet">
     <link href="/themes/public/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
     <link href="/themes/public/assets/css/theme.min.css" rel="stylesheet" id="style-default">
@@ -21,6 +24,7 @@
     <link href="/themes/public/assets/css/user.min.css" rel="stylesheet" id="user-style-default">
     <title> Scope Visions | Outgoing Inspection List</title>
 </head>
+
 <body>
     <div class="container mt-2">
         <div class="card">
@@ -28,7 +32,8 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-6">
-                            <a href="{{ route('adminDashboardPage') }}" class="btn btn-outline-primary"><i class="fas fa-angle-left me-2"></i>Back</a>
+                            <a href="{{ route('adminDashboardPage') }}" class="btn btn-outline-primary"><i
+                                    class="fas fa-angle-left me-2"></i>Back</a>
                         </div>
                         <div class="col-6">
                             <h2 class="text-end">Outgoing Inspection List</h2>
@@ -37,11 +42,12 @@
                 </div>
             </div>
             <div class="card-body">
-                    <input type="text" class="form-control" id="searchOutGoingInspectionReport"  name="searchOutGoingInspectionReport">
+                <input type="text" class="form-control" id="searchOutGoingInspectionReport"
+                    name="searchOutGoingInspectionReport">
                 <div class="col-12 py-2">
                     <div class="py-2 d-flex justify-content-end align-items-center">
                     </div>
-                    <table class="table">
+                    {{-- <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 10%;text-align:center">
@@ -64,48 +70,104 @@
                                 </th>
                             </tr>
                         </thead>
-                        @if ( $selectOutGoingInspectionReports->isEmpty() )
-                            
+                        @if ($selectOutGoingInspectionReports->isEmpty())
                         @else
-                        <tbody id="clientData">
-                            <div id="total_records">
+                            <tbody id="clientData">
+                                <div id="total_records">
+                                    @foreach ($selectOutGoingInspectionReports as $selectOutGoingInspectionReport)
+                                        <tr>
+                                            <th scope="row" style="width: 10%;text-align:center">
+                                                {{ $selectOutGoingInspectionReport->id }}
+                                            </th>
+                                            <td style="width: 15%;text-align:center">
+                                                {{ $selectOutGoingInspectionReport->scope_model }}
+                                            </td>
+                                            <td style="width: 15%;text-align:center">
+                                                {{ $selectOutGoingInspectionReport->scope_sr_number }}
+                                            </td>
+                                            <td style="width: 10%;text-align:center">
+                                                {{ $selectOutGoingInspectionReport->scope_incoming_date }}
+                                            </td>
+                                            <td style="width: 30%;text-align:center">
+                                                {{ $selectOutGoingInspectionReport->sender_name }}
+                                            </td>
+                                            <td style="width: 20%;text-align:center">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <a href="#"
+                                                                class="action-icon dropdown-toggle text-black"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="fas fa-bars"></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-right"
+                                                                style="">
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('detailsPageOutgoingGastroAndColonoScope', $selectOutGoingInspectionReport->id) }}"><i
+                                                                        class="fas fa-user mx-2"></i> View Detail</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('withoutTjfInspectionOutgoingEditPage', $selectOutGoingInspectionReport->id) }}"><i
+                                                                        class="fas fa-edit mx-2"></i> Edit</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('removeWithoutTjfInspectionOutgoingReport', $selectOutGoingInspectionReport->id) }}"><i
+                                                                        class="fas fa-trash mx-2"></i> Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </div>
+                            </tbody>
+                        @endif
+                    </table> --}}
+                    <div class="row py-2" id="companyList">
+                        @if ($selectOutGoingInspectionReports->isEmpty())
+                        @else
                             @foreach ($selectOutGoingInspectionReports as $selectOutGoingInspectionReport)
-                            <tr>
-                                <th scope="row" style="width: 10%;text-align:center">
-                                    {{ $selectOutGoingInspectionReport->id }}
-                                </th>
-                                <td  style="width: 15%;text-align:center">
-                                    {{ $selectOutGoingInspectionReport->scope_model }}
-                                </td>
-                                <td  style="width: 15%;text-align:center">
-                                    {{ $selectOutGoingInspectionReport->scope_sr_number }}
-                                </td>
-                                <td  style="width: 10%;text-align:center">
-                                    {{ $selectOutGoingInspectionReport->scope_incoming_date }}
-                                </td>
-                                <td  style="width: 30%;text-align:center">
-                                    {{ $selectOutGoingInspectionReport->sender_name }}
-                                </td>
-                                <td  style="width: 20%;text-align:center">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                  <a class="dropdown-item" href="{{ route('detailsPageOutgoingGastroAndColonoScope',$selectOutGoingInspectionReport->id) }}"><i class="fas fa-user mx-2"></i> View Detail</a>
-                                                  <a class="dropdown-item" href="{{ route('withoutTjfInspectionOutgoingEditPage',$selectOutGoingInspectionReport->id) }}"><i class="fas fa-edit mx-2"></i> Edit</a>
-                                                  <a class="dropdown-item" href="{{ route('removeWithoutTjfInspectionOutgoingReport',$selectOutGoingInspectionReport->id) }}"><i class="fas fa-trash mx-2"></i> Delete</a>
+                                <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-body">
+                                            <div class="row py-2">
+                                                <div class="col-12" style="padding-left: 90%;">
+                                                    <a href="#" class="action-icon dropdown-toggle text-black"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('detailsPageOutgoingGastroAndColonoScope', $selectOutGoingInspectionReport->id) }}"><i
+                                                                class="fas fa-user mx-2"></i> View Detail</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('withoutTjfInspectionOutgoingEditPage', $selectOutGoingInspectionReport->id) }}"><i
+                                                                class="fas fa-edit mx-2"></i> Edit</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('removeWithoutTjfInspectionOutgoingReport', $selectOutGoingInspectionReport->id) }}"><i
+                                                                class="fas fa-trash mx-2"></i> Delete</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span
+                                                        style="font-size: 15px;">{{ $selectOutGoingInspectionReport->sender_name }}</span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-box"></i>
+                                                        <span
+                                                            mx-2>{{ $selectOutGoingInspectionReport->scope_model }}</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-barcode"></i>
+                                                        <span
+                                                            mx-2>{{ $selectOutGoingInspectionReport->scope_sr_number }}</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-calendar"></i>
+                                                        <span
+                                                            mx-2>{{ $selectOutGoingInspectionReport->scope_incoming_date }}</span></span>
+                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
+                                </div>
                             @endforeach
-                            </div>
-                        </tbody>
                         @endif
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,29 +185,30 @@
     <script src="/jquery-3.7.1.min.js"></script>
     <script>
         // search operations
-    $(document).ready(function(){
- 
- fetch_customer_data();
+        $(document).ready(function() {
 
- function fetch_customer_data(query = '')
- {
-     $.ajax({
-         url:"{{ route('searchOutgoingGastroAndColonoScopeReport') }}",
-         method:'GET',
-         data:{query:query},
-         dataType:'json',
-         success:function(data)
-         {
-             $('tbody').html(data.table_data);
-         }
-     })
- }
+            fetch_customer_data();
 
- $(document).on('keyup', '#searchOutGoingInspectionReport', function(){
-     var query = $(this).val();
-     fetch_customer_data(query);
- });
-});
+            function fetch_customer_data(query = '') {
+                $.ajax({
+                    url: "{{ route('searchOutgoingGastroAndColonoScopeReport') }}",
+                    method: 'GET',
+                    data: {
+                        query: query
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#companyList').html(data.table_data);
+                    }
+                })
+            }
+
+            $(document).on('keyup', '#searchOutGoingInspectionReport', function() {
+                var query = $(this).val();
+                fetch_customer_data(query);
+            });
+        });
     </script>
 </body>
+
 </html>

@@ -138,36 +138,43 @@ class employeeController extends Controller
             if ($total_row > 0) {
                 foreach ($selectEmployee as $selectEmployees) {
                     $output .= '
-                    <tr>
-                    <th scope="row" style="width: 5%">' . $selectEmployees->id . '</th>
-                    <td style="width: 20%;text-align:center">' . $selectEmployees->user_type . '</td>
-                    <td  style="width: 40%;text-align:center">
-                        ' . $selectEmployees->employeename . '
-                    </td>
-                    <td  style="width: 30%;text-align:center">
-                        ' . $selectEmployees->employeeemailaddress . '
-                    </td>
-                    <td  style="width: 5%;text-align:center">
-                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                  <a class="dropdown-item" href="/employeeDetailsPage/' . $selectEmployees->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
-                                                  <a class="dropdown-item" href="/attendanceEmployeesDetailsPage/' . $selectEmployees->id . '"><i class="fas fa-history mx-2"></i> Attendance</a>
+                       <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-body">
+                                            <div class="row py-2">
+                                                <div class="col-12" style="padding-left: 90%;">
+                                                    <a href="#" class="action-icon dropdown-toggle text-black"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                                        <a class="dropdown-item"
+                                                            href="/employeeDetailsPage/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-user mx-2"></i> View Detail</a>
+                                                        <a class="dropdown-item"
+                                                            href="/attendanceEmployeesDetailsPage/' . $selectEmployees->id . '"><i
+                                                                class="fas fa-history mx-2"></i> Attendance</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span
+                                                        style="font-size: 20px;">' . $selectEmployees->employeename . '</span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i
+                                                            class="mx-2 fas fa-envelope"></i>
+                                                        <span
+                                                            mx-2>' . $selectEmployees->employeeemailaddress . '</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-users"></i>
+                                                        <span mx-2>' . $selectEmployees->user_type . '</span></span>
+                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                    </tr>
+                       </div>
                     ';
                 }
             } else {
-                $output = '
-                <tr>
-                    <td align="center" colspan="12">No Data Found</td>
-                </tr>
-                ';
+                $output = '<span class="text-center">No Data Found</span>';
             }
             $selectEmployee = array(
                 'table_data'  => $output,
@@ -241,8 +248,8 @@ class employeeController extends Controller
     //
     public function employeeDetailsPage($id)
     {
-        $selectEmployeePage     = DB::table('employees')
-            ->leftJoin('employee_details', 'employees.id', '=', 'employee_details.employee_id')
+        $selectEmployeePage     = DB::table('employee_details')
+            ->leftJoin('employees', 'employee_details.employee_id', '=', 'employees.id')
             ->select('employee_details.*', 'employees.employeename', 'employees.employeeemailaddress', 'employees.user_image', 'employees.user_type')
             ->where('employees.id', '=', $id)
             ->get();
@@ -251,7 +258,7 @@ class employeeController extends Controller
         $educationsAdditional   = DB::table('additional_cources')->where('employee_id', '=', $id)->get();
         if (count($selectEmployeePage) > 0) {
             return view('employeeside.employee.employee-details', [
-                'selectEmployee'       => $selectEmployeePage,
+                'selectEmployeePage'       => $selectEmployeePage,
                 'selectSocials'        => $selectSocials,
                 'educations'           => $educations,
                 'educationsAdditional' => $educationsAdditional,
@@ -1778,41 +1785,76 @@ class employeeController extends Controller
 
             $total_row = $selectOutGoingInspectionReports->count();
             if ($total_row > 0) {
+                // foreach ($selectOutGoingInspectionReports as $selectOutGoingInspectionReport) {
+                //     $output .= '
+                //     <tr>
+                //     <th scope="row" style="width: 10%;text-align:center">' . $selectOutGoingInspectionReport->id . '</th>
+                //     <td style="width: 15%;text-align:center">' . $selectOutGoingInspectionReport->scope_model . '</td>
+                //     <td  style="width: 15%;text-align:center">
+                //         ' . $selectOutGoingInspectionReport->scope_sr_number . '
+                //     </td>
+                //     <td  style="width: 10%;text-align:center">
+                //         ' . $selectOutGoingInspectionReport->scope_incoming_date . ' 
+                //     </td>
+                //     <td  style="width: 30%;text-align:center">
+                //         ' . $selectOutGoingInspectionReport->sender_name . '
+                //     </td>
+                //     <td  style="width: 20%;text-align:center">
+                //     <div class="d-flex justify-content-center">
+                //                         <div class="row">
+                //                             <div class="col-12">
+                //                                 <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
+                //                                 <div class="dropdown-menu dropdown-menu-right" style="">
+                //                                   <a class="dropdown-item" href="/detailsOperationPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
+                //                                 </div>
+                //                             </div>
+                //                         </div>
+                //                     </div>
+                //     </td>
+                //     </tr>
+                //     ';
+                // }
+                // 
                 foreach ($selectOutGoingInspectionReports as $selectOutGoingInspectionReport) {
                     $output .= '
-                    <tr>
-                    <th scope="row" style="width: 10%;text-align:center">' . $selectOutGoingInspectionReport->id . '</th>
-                    <td style="width: 15%;text-align:center">' . $selectOutGoingInspectionReport->scope_model . '</td>
-                    <td  style="width: 15%;text-align:center">
-                        ' . $selectOutGoingInspectionReport->scope_sr_number . '
-                    </td>
-                    <td  style="width: 10%;text-align:center">
-                        ' . $selectOutGoingInspectionReport->scope_incoming_date . ' 
-                    </td>
-                    <td  style="width: 30%;text-align:center">
-                        ' . $selectOutGoingInspectionReport->sender_name . '
-                    </td>
-                    <td  style="width: 20%;text-align:center">
-                    <div class="d-flex justify-content-center">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <a href="#" class="action-icon dropdown-toggle text-black" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                  <a class="dropdown-item" href="/detailsOperationPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i class="fas fa-user mx-2"></i> View Detail</a>
+                                <div class="col-sm-6 col-md-3 d-flex align-items-stretch flex-column px-2 py-2">
+                                    <div class="card bg-light d-flex flex-fill">
+                                        <div class="card-body">
+                                            <div class="row py-2">
+                                                <div class="col-12" style="padding-left: 90%;">
+                                                    <a href="#" class="action-icon dropdown-toggle text-black"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                                        <a class="dropdown-item"
+                                                            href="/detailsOperationPageOutgoingGastroAndColonoScope/' . $selectOutGoingInspectionReport->id . '"><i
+                                                                class="fas fa-user mx-2"></i> View Detail</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span
+                                                        style="font-size: 15px;">' . $selectOutGoingInspectionReport->sender_name . '</span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-box"></i>
+                                                        <span
+                                                            mx-2>' . $selectOutGoingInspectionReport->scope_model . '</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-barcode"></i>
+                                                        <span
+                                                            mx-2>' . $selectOutGoingInspectionReport->scope_sr_number . '</span></span>
+                                                    <br>
+                                                    <span style="font-size: 12px;"><i class="mx-2 fas fa-calendar"></i>
+                                                        <span
+                                                            mx-2>' . $selectOutGoingInspectionReport->scope_incoming_date . ' </span></span>
+                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                    </td>
-                    </tr>
-                    ';
+                                </div>
+                ';
                 }
             } else {
-                $output = '
-                <tr>
-                    <td align="center" colspan="12">No Data Found</td>
-                </tr>
-                ';
+                $output = '<span class="text-center">No Data Found</span>';
             }
             $selectOutGoingInspectionReports = array(
                 'table_data'  => $output,

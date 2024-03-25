@@ -86,6 +86,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/tjfInspectionIncomingCreateOperation', [AdminController::class, 'TjfInspectionIncomingCreateOperation'])->name('TjfInspectionIncomingCreateOperation');
     Route::any('/updateTjfInspectionIncomingReport/{id}', [AdminController::class, 'TjfInspectionIncomingReport'])->name('TjfInspectionIncomingReport');
     Route::any('/TjfInspectionOutgoingCreatingOperation', [AdminController::class, 'TjfInspectionOutgoingCreatingOperation'])->name('TjfInspectionOutgoingCreatingOperation');
+    Route::any('/updateTjfInspectionOutgoingCreatingOperation/{id}', [AdminController::class, 'updateTjfInspectionOutgoingCreatingOperation'])->name('updateTjfInspectionOutgoingCreatingOperation');
     Route::get('/creatingPagesDailyRecords/{id}', [AdminController::class, 'createIncomingAndOutGoingDailyRecordPages'])->name('createIncomingAndOutGoingDailyRecordPages');
     Route::post('/creatingOperationDailyIncomingRecord', [AdminController::class, 'createOperationIncomingAndOutgoingDailyRecord'])->name('createOperationIncomingAndOutgoingDailyRecord');
     Route::get('incomingAndOutgoingDailyRecordList', [AdminController::class, 'incomingAndOutGoingDailyRecordList'])->name('incomingAndOutGoingDailyRecordList');

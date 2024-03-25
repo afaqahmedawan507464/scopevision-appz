@@ -250,7 +250,7 @@
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Channel:</label>
                         <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_leakage == 1)
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_channel == 1)
                                 <option value="">Ok</option>
                             @else
                                 <option value="">Not Ok</option>
@@ -260,7 +260,7 @@
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Elevator Wire:</label>
                         <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_view == 1)
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_wire == 1)
                                 <option value="">Ok</option>
                             @else
                                 <option value="">Not Ok</option>
@@ -270,7 +270,7 @@
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Elevator Axel:</label>
                         <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_lightguide == 1)
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_axel == 1)
                                 <option value="">Ok</option>
                             @else
                                 <option value="">Not Ok</option>
@@ -280,7 +280,7 @@
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Tip Cover:</label>
                         <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_airwater == 1)
+                            @if ($selectIncomingReportInspections->scope_tjf_tip_cover == 1)
                                 <option value="">Ok</option>
                             @else
                                 <option value="">Not Ok</option>
@@ -290,7 +290,7 @@
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Clinder:</label>
                         <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_angulation == 1)
+                            @if ($selectIncomingReportInspections->scope_tjf_elevator_clinder == 1)
                                 <option value="">Ok</option>
                             @else
                                 <option value="">Not Ok</option>
@@ -300,7 +300,7 @@
                     <div class="col-2 p-2" style="border:0.5px solid lightgray">
                         <label class="my-2" style="margin-top: 5px;font-size:12px;">Ele Liver:</label>
                         <select name="" id="" class="form-control" disabled>
-                            @if ($selectIncomingReportInspections->scope_lgtube == 1)
+                            @if ($selectIncomingReportInspections->scope_tjf_liver == 1)
                                 <option value="">Ok</option>
                             @else
                                 <option value="">Not Ok</option>
